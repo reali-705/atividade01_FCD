@@ -1,0 +1,12 @@
+\subsection*{Questão 02}
+
+\textit{Exemplo de código em Python para amostragem de um sinal senoidal.}
+
+\begin{lstlisting}[language=Python, caption={Exemplo de amostragem de sinal}]
+import numpy as np
+
+# Definindo a frequencia
+f = 1000 # 1 kHz
+t = np.linspace(0, 0.001, 100)
+sinal = np.sin(2 * np.pi * f * t)
+\end{lstlisting}
