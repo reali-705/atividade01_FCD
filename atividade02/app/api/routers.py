@@ -6,7 +6,7 @@ from app.api.schemas import (
 )
 from fastapi import APIRouter, status
 
-from atividade02.app.utils.utils import RECORDINGS_DIR
+from app.utils.utils import RECORDINGS_DIR
 
 router = APIRouter()
 
@@ -28,7 +28,7 @@ async def texto_para_som(request: TextoParaMorseRequest) -> TextoParaMorseRespon
     return TextoParaMorseResponse(
         codigo_morse="",
         id=0,
-        caminho_audio=f"{RECORDINGS_DIR}/output.wav",
+        caminho_audio=str(RECORDINGS_DIR / "output.wav"),
         duracao_total=0.0,
     )
 

@@ -51,7 +51,7 @@ class TextoParaMorseRequest(BaseRequest):
         resultante contém apenas caracteres alfanuméricos e espaços.
         """
         valor_normalizado = valor.replace("_", " ").replace("\n", " ").strip()
-        if not re.match(r"^[\w\s]+$", valor_normalizado):
+        if not re.match(r"^[a-zA-Z0-9\s]+$", valor_normalizado):
             raise ValueError(
                 "O texto original deve conter apenas caracteres alfanuméricos e espaços"
             )
@@ -62,8 +62,8 @@ class TextoParaMorseResponse(BaseResponse):
     caminho_audio: str = Field(
         default=...,
         examples=[
-            f"{RECORDINGS_DIR}/output/sos.wav",
-            f"{RECORDINGS_DIR}/output/testando.wav",
+            str(RECORDINGS_DIR / "output" / "sos.wav"),
+            str(RECORDINGS_DIR / "output" / "testando.wav"),
         ],
         description="Caminho para o arquivo de áudio gerado com a conversão do texto em código Morse",
     )
@@ -80,8 +80,8 @@ class SomParaTextoRequest(BaseRequest):
     caminho_audio: str = Field(
         default=...,
         examples=[
-            f"{RECORDINGS_DIR}/input/sos.wav",
-            f"{RECORDINGS_DIR}/input/testando.wav",
+            str(RECORDINGS_DIR / "input" / "sos.wav"),
+            str(RECORDINGS_DIR / "input" / "testando.wav"),
         ],
         description="Caminho para o arquivo de áudio contendo o código Morse a ser convertido em texto alfanumérico",
     )
