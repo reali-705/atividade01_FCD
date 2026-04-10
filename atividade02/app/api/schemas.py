@@ -47,14 +47,15 @@ class TextoParaMorseRequest(BaseRequest):
     @classmethod
     def validar_texto_original(cls, valor: str) -> str:
         """
-        Valida que o texto original contém apenas caracteres alfanuméricos e espaços,
-        e remove underscores e novas linhas, substituindo-os por espaços.
+        Normaliza underscores e novas linhas para espaços e valida que o texto
+        resultante contém apenas caracteres alfanuméricos e espaços.
         """
-        if not re.match(r"^[\w\s]+$", valor.strip()):
+        valor_normalizado = valor.replace("_", " ").replace("\n", " ").strip()
+        if not re.match(r"^[\w\s]+$", valor_normalizado):
             raise ValueError(
                 "O texto original deve conter apenas caracteres alfanuméricos e espaços"
             )
-        return valor.replace("_", " ").replace("\n", " ").strip()
+        return valor_normalizado
 
 
 class TextoParaMorseResponse(BaseResponse):

@@ -6,6 +6,8 @@ from app.api.schemas import (
 )
 from fastapi import APIRouter, status
 
+from atividade02.app.utils.utils import RECORDINGS_DIR
+
 router = APIRouter()
 
 
@@ -26,7 +28,7 @@ async def texto_para_som(request: TextoParaMorseRequest) -> TextoParaMorseRespon
     return TextoParaMorseResponse(
         codigo_morse="",
         id=0,
-        caminho_audio="./data/recordings/output/*.wav",
+        caminho_audio=f"{RECORDINGS_DIR}/output.wav",
         duracao_total=0.0,
     )
 
@@ -38,7 +40,7 @@ async def texto_para_som(request: TextoParaMorseRequest) -> TextoParaMorseRespon
     summary="Converter áudio contendo código Morse em texto alfanumérico",
 )
 async def som_para_texto(request: SomParaTextoRequest) -> SomParaTextoResponse:
-    """'
+    """
     Endpoint para converter um arquivo de áudio contendo código Morse em texto alfanumérico.
     O usuário deve fornecer o caminho para o arquivo de áudio a ser convertido e a frequência utilizada na gravação.
     """
