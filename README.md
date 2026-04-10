@@ -7,7 +7,7 @@ Este repositório contém resoluções de exercícios e projetos relacionados à
 - **Instituto de Ciências Exatas e Naturais - ICEN**
 - **Curso de Bacharelado em Ciência da Computação**
 - **Disciplina:** Fundamentos de Comunicação Digital
-- **Professor:** Raimundo Viegas Junior
+- **Professor:** Dr. Raimundo Viégas Junior
 - **Alunos:**
   - [![GitHub](https://img.shields.io/badge/-%23121011.svg?style=flat-square&logo=github&logoColor=white) Alessandro Reali Lopes Silva](https://github.com/reali-705)
   - [![GitHub](https://img.shields.io/badge/-%23121011.svg?style=flat-square&logo=github&logoColor=white) Caio Barbosa Correa](https://github.com/caiiocb)
