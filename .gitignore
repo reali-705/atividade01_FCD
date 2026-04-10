@@ -1,0 +1,39 @@
+# --- Regras Globais e Sistema ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- LaTeX ---
+# Ignora arquivos auxiliares gerados pela compilação 
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# --- Python & UV ---
+# Ambientes virtuais e pacotes
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configurações do UV
+.python-version
+
+# --- Dados, Banco de Dados e Debug ---
+# Ignorar o banco SQLite local para que o histórico não seja sobrescrito entre o trio
+*.db
+
+# Ignorar arquivos de áudio pesados gerados durante o debug
+*.wav
+
+# Ignorar arquivos de logs de sessão
+*.log
+
+# --- IDEs (VS Code) ---
+.vscode/
