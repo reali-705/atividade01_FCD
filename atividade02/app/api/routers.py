@@ -4,9 +4,8 @@ from app.api.schemas import (
     TextoParaMorseRequest,
     TextoParaMorseResponse,
 )
-from fastapi import APIRouter, status
-
 from app.utils.utils import RECORDINGS_DIR
+from fastapi import APIRouter, status
 
 router = APIRouter()
 
@@ -25,10 +24,18 @@ async def texto_para_som(request: TextoParaMorseRequest) -> TextoParaMorseRespon
 
     # TODO: Lógica de conversão do texto para código Morse e geração do áudio
 
+    # Teste de integração com o Frontend(Flet)
+    texto_recebido = request.texto_original
+    print(f"[DEBUG] Texto recebido para conversão: '{texto_recebido}'")
+
     return TextoParaMorseResponse(
-        codigo_morse="",
+        # TODO: Substituir o código Morse de teste pelo resultado real da conversão do texto recebido
+        codigo_morse=texto_recebido,
+        # TODO: Substituir o ID de teste por um ID real gerado pelo banco de dados
         id=0,
+        # TODO: Gerar o arquivo de áudio e adicioná-lo ao caminho correto para o frontend acessar
         caminho_audio=str(RECORDINGS_DIR / "output.wav"),
+        # TODO: Substituir a duração total de teste pelo valor real calculado durante a geração do áudio
         duracao_total=0.0,
     )
 
