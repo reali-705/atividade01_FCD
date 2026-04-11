@@ -1,7 +1,5 @@
-'''Este arquivo é responsável por configurar as variáveis de ambiente e outras configurações do projeto.'''
-# app/core/constants.py
+'''Este arquivo é responsável por configurar as variáveis de ambiente e outras configurações do projeto. '''
 
-# Dicionário baseado na imagem fornecida
 MORSE_MAP = {
     "A": ".-",    "B": "-...",  "C": "-.-.",  "D": "-..",
     "E": ".",     "F": "..-.",  "G": "--.",   "H": "....",
