@@ -16,4 +16,4 @@ def texto_para_morse(text: str) -> str:
 def morse_para_texto(morse: str) -> str:
     """Converte uma string em Morse para texto simples."""
     
-    return ''.join(config.REVERSE_MORSE_MAP.get(letra_morse, '?') for letra_morse in morse.split(" ")
+    return ''.join(config.REVERSE_MORSE_MAP.get(letra_morse, '?') for letra_morse in morse.split(" "))
