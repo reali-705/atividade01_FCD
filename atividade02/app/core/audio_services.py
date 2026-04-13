@@ -83,9 +83,21 @@ class GravadorAudio:
         else:
             return np.array([])
 
-    #redundante? sim , mas preguiça (23:57 já)
-    def salvar_audio(self, audio, filename):
-        return salvar_audio(audio, filename, self.sample_rate)
+    def salvar_audio(self, audio: NDArray[np.floating], filename: str) -> str:
+    """Salva o array de áudio em um arquivo WAV."""
+
+        caminho_completo = RECORDINGS_DIR / "output" / filename
+        caminho_completo.parent.mkdir(parents=True, exist_ok=True)
+
+        audio32: NDArray[np.float32] = np.asarray(audio, dtype=np.float32)
+
+        try:
+            wavfile.write(caminho_completo, self.sample_rate, audio32)
+            print(f"Sucesso! Áudio salvo como: {filename}")
+            return str(caminho_completo)
+        except Exception as e:
+            print(f"Erro ao salvar áudio: {e}")
+        return ""
 
     def carregar_de_arquivo(self, filename: str) -> NDArray[np.float32]:
         caminho = RECORDINGS_DIR / "output" / filename
