@@ -57,10 +57,7 @@ class TextoParaMorseRequest(BaseRequest):
 class TextoParaMorseResponse(BaseResponse):
     caminho_audio: str = Field(
         default=...,
-        examples=[
-            str(RECORDINGS_DIR / "output" / "sos.wav"),
-            str(RECORDINGS_DIR / "output" / "testando.wav"),
-        ],
+        examples=["/audio/output.wav"],
         description="Caminho para o arquivo de áudio gerado com a conversão do texto em código Morse",
     )
     duracao_total: float = Field(

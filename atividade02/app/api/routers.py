@@ -37,13 +37,15 @@ async def texto_para_som(request: TextoParaMorseRequest) -> TextoParaMorseRespon
         freq_traco=request.frequencia_traco,
     )
 
-    caminho_audio = salvar_audio(audio, filename="output.wav")
+    filename = "output.wav"
+    salvar_audio(audio=audio, filename=filename)
+    url_audio = f"/audios/{filename}"
 
     duracao_total = len(audio) / SAMPLE_RATE
 
     return TextoParaMorseResponse(
         codigo_morse=codigo_morse_gerado,
-        caminho_audio=caminho_audio,
+        caminho_audio=url_audio,
         duracao_total=duracao_total,
     )
 
