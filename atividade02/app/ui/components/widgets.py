@@ -6,7 +6,7 @@ def criar_card_saida(texto_controle):
     return ft.Container(
         content=ft.Column([
             ft.Text("TRADUÇÃO"),
-            ft.Container(content=texto_controle, padding=10, width=500, height=300)
+            ft.Container(content=texto_controle, padding=10, width=500, height=200)
         ]),
         bgcolor="#f0f4f8",
         border_radius=10,
@@ -59,34 +59,43 @@ def frequencia_dropdown():
         label="Frequência (Hz)",
         value="800",
         options=[
+            ft.dropdown.Option("200"),
             ft.dropdown.Option("400"),
             ft.dropdown.Option("800"),
             ft.dropdown.Option("1000"),
             ft.dropdown.Option("1500"),
             ft.dropdown.Option("2000"),
         ],
-        width=150
+        width=150,
+        
     )
 
 '''Função para criar a seção de telegrafista, que inclui um gráfico 
 de ondas de áudio e botões para baixar o áudio e copiar o Morse'''
-def criar_secao_telegrafista():
+import flet as ft
+
+def criar_secao_telegrafista(btn_gravacao, status_text):
     return ft.Column(
         controls=[
             ft.Text("Modo Telegrafista e Visualização de Áudio", size=30, weight="bold"),
-            ft.Container(content=ft.Text("Gráfico de Ondas de Áudio", weight="bold", color=ft.Colors.GREY_500),
-                         bgcolor="#f0f4f8",
-                         padding=20,
-                         border_radius=10,
-                         height=500,
-                         width=600
-
+            # Exibição do Status de Gravação acima do gráfico
+            status_text, 
+            ft.Container(
+                content=ft.Column([
+                    ft.Text("Gráfico de Ondas de Áudio", weight="bold", color=ft.Colors.GREY_500),
+                    # O botão de gravação fica centralizado dentro do container ou logo abaixo
+                    btn_gravacao
+                ]),
+                bgcolor="#f0f4f8",
+                padding=20,
+                border_radius=10,
+                height=500,
+                width=600,
             ),
             ft.Row([
-                ft.ElevatedButton("Baixar Áudio"),
-                ft.ElevatedButton("Copiar Morse")
+                ft.Button("Baixar Áudio"),
+                ft.Button("Copiar Morse"),
             ], spacing=10)
         ],
         spacing=15
-        
     )
