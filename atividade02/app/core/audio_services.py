@@ -153,20 +153,6 @@ class GravadorAudio:
             return int(f_central)
         return 800 # Volta pro padrão se detectar algo estranho
 
-    def pre_processar(self, audio: NDArray[np.floating]) -> NDArray[np.floating]:
-        """Pipeline adaptativo completo."""
-        # 1. Identifica a banda do sinal atual
-        f_central = self.encontrar_frequencia_dominante(audio)
-        
-        # 2. Ajusta as janelas do filtro dinamicamente (+- 150Hz de margem)
-        f_baixa = max(300, f_central - 150)
-        f_alta = min(self.sample_rate // 2 - 1, f_central + 150)
-        
-        # 3. Processa com os novos parâmetros
-        audio_filtrado = self.filtrar_audio(audio, f_baixa, f_alta)
-        audio_normal = self.normalizar_amplitude(audio_filtrado)
-        
-        return audio_normal
 
     def pre_processar(self, audio, freq_baixa=500, freq_alta=1000,
                   amplitude_alvo=0.5, limiar_fraco=0.05,
